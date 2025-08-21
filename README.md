@@ -57,6 +57,7 @@ Apareció un conflicto entre los archivos debido a que al editar el mismo e inte
 8.	Resuelvan el conflicto con IntelliJ si es posible.
 Otra manera de resolver el conflicto es haciendo uso del comando git reset –hard para eliminar los cambios que yo realice y dejar el repositorio en el estado del último pull que hice.
 
+
 ## Parte 3
 1.	¿Hay una mejor forma de trabajar con git para no tener conflictos?
 Si, hay mejores prácticas para trabajar en Git y no tener conflictos, como con el uso de ramas o branches, que permiten que cada desarrollador trabaje en su propio entorno sin afectar directamente la rama principal (main). Además, es recomendable utilizar pull requests para solicitar la integración de los cambios. De esta manera, el propietario del repositorio (o un responsable designado) puede revisar y aprobar los cambios antes de fusionarlos a la rama principal.
