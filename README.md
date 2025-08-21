@@ -14,7 +14,7 @@ Checklist de actividades (confirmadas):
 - Abrir una cuenta de GitHub y enlazar el correo institucional — Hecho.
 - Crear un repositorio vacío en GitHub — Hecho.
 - Configurar el repositorio local con el repositorio remoto — Hecho.
-- Subir los cambios usando los comandos indicados (`git add .`, `git commit -m "mensaje"`, `git push "url repositorio"`) — Hecho.
+- Subir los cambios usando los comandos indicados (`git add .`, `git commit -m "mensaje"`, `git push -u origin main`) — Hecho.
 - Configurar el correo en Git local correctamente — Hecho.
 - Volver a subir los cambios y verificar en GitHub — Hecho.
 
@@ -31,15 +31,17 @@ Archivo creado/actualizado por el Nella.
 3.	Averigua para qué sirve y como se usan estos comandos git add y git commit -m “mensaje”.
 El comando git add se utiliza para añadir los cambios realizados en los archivos a la zona de preparación (staging area) en el repositorio local de Git. Una vez que los cambios están listos, se ejecuta git commit -m "mensaje", lo cual guarda esos cambios de forma definitiva en el repositorio, acompañado de un mensaje que describe lo que se ha modificado. Esto permite llevar un registro claro de las actualizaciones realizadas a lo largo del tiempo.
  
-4.	Abre una cuenta de github, si ya la tienes, enlazala con el correo institucional.
-5.	Crea un repositorio en blanco (vacío) e GitHub.
+4.	Abre una cuenta de GitHub; si ya la tienes, enlázala con el correo institucional.
+5.	Crea un repositorio en blanco (vacío) en GitHub.
 6.	Configura el repositorio local con el repositorio remoto.
-7.	Sube los cambios, teniendo en cuenta lo que averiguaste en el punto 3 Utiliza los siguientes comandos en el directorio donde tienes tu proyecto, en este orden:
+7.	Sube los cambios, teniendo en cuenta lo que averiguaste en el punto 3. Utiliza los siguientes comandos en el directorio donde tienes tu proyecto, en este orden:
 a.	  git add .
- 
+
 b.	  git commit -m "mensaje, lo que hiciste con el archivo"
- 
-c.	  git push "url repositorio"
+
+c.	  git push -u origin main
+
+Nota: En el primer push es buena práctica usar -u (o --set-upstream) para establecer la rama remota por defecto. Si tu rama local tiene otro nombre, reemplaza main por el nombre de la rama (por ejemplo: git push -u origin mi-rama) o usa git push origin main para un push sin establecer upstream.
  
 8.	Configura el correo en git local de manera correcta.
  
@@ -55,7 +57,9 @@ Apareció un conflicto entre los archivos debido a que al editar el mismo e inte
 7.	Repetir un cambio sobre el README.md ambas personas al tiempo para volver a tener conflictos.
 
 8.	Resuelvan el conflicto con IntelliJ si es posible.
-Otra manera de resolver el conflicto es haciendo uso del comando git reset –hard para eliminar los cambios que yo realice y dejar el repositorio en el estado del último pull que hice.
+Otra manera de resolver el conflicto es haciendo uso del comando `git reset --hard` para eliminar los cambios que yo realicé y dejar el repositorio en el estado del último pull que hice.
+
+> ⚠️ Advertencia: El comando `git reset --hard` eliminará todos los cambios no confirmados (uncommitted changes) de forma permanente. Asegúrate de que no necesitas esos cambios antes de ejecutarlo, ya que no se pueden recuperar.
 
 
 ## Parte 3
