@@ -24,3 +24,7 @@ Nota: Este archivo solo registra que las tareas fueron realizadas. Para ver evid
 
 Archivo creado/actualizado por el Nella.
 
+# Parte II: Trabajo en parejas
+
+- Generar el conflicto con intelliJ
+
