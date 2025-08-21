@@ -2,7 +2,7 @@
 
 ## Grupo 3
 
-# Lab01 - DOSW (Parte I: Trabajo Individual)
+# DOSW (Parte I: Trabajo Individual)
 
 
 Checklist de actividades (confirmadas):
