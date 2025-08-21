@@ -1,5 +1,6 @@
 # Laboratorio 1 DOSW
 
+## Integrantes: Marianella Polo y Carlos Piedrahita
 ## Grupo 3
 
 # Lab01 - DOSW (Parte I: Trabajo Individual)
