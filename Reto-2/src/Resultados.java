@@ -7,8 +7,8 @@ public record Resultados(
         long cantidad,
         boolean mayorMultiploDe2,
         boolean mayorDivisorDe2,
-        boolean cantidadPar
-
+        boolean cantidadPar,
+        boolean cantidadImpar
 ) {
     @Override public String toString() {
         return "Resultados{" +
@@ -17,6 +17,7 @@ public record Resultados(
                 ", cantidad=" + cantidad +
                 ", mayorMultiploDe2=" + mayorMultiploDe2 +
                 ", mayorDivisorDe2=" + mayorDivisorDe2 +
-                ", cantidadPar=" + cantidadPar +'}';
+                ", cantidadPar=" + cantidadPar +
+                ", cantidadImpar=" + cantidadImpar + '}';
     }
 }

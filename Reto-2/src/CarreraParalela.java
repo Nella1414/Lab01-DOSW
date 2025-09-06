@@ -46,7 +46,8 @@ public final class CarreraParalela {
         boolean mayorMultiploDe2 = maximo % 2 == 0;
         boolean mayorDivisorDe2 = 2 % maximo == 0;
         boolean cantidadPar = cantidad % 2 == 0;
-        return new Resultados(maximo, minimo, cantidad, mayorMultiploDe2, mayorDivisorDe2,cantidadPar);
+        boolean cantidadImpar = cantidad % 2 != 0;
+        return new Resultados(maximo, minimo, cantidad, mayorMultiploDe2, mayorDivisorDe2, cantidadPar, cantidadImpar);
     }
 
     public static void main(String[] args) {
