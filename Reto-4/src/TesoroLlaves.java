@@ -1,3 +1,5 @@
+package com.lab.retos;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -55,6 +57,13 @@ public final class TesoroLlaves {
         return origen.entrySet().stream()
                 .map(e -> Map.entry(e.getKey().toUpperCase(Locale.ROOT), e.getValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a,b)->a, LinkedHashMap::new));
+    }
+
+    /**
+     * Estudiante B (fase posterior): Devuelve un mapa ordenado ascendentemente por clave (usando TreeMap para simplicidad).
+     */
+    public static Map<String,String> ordenarAsc(Map<String,String> origen) {
+        return new TreeMap<>(origen); // TreeMap mantiene orden ascendente por clave
     }
 
     /**
