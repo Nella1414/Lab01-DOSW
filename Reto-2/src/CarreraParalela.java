@@ -17,12 +17,37 @@ public final class CarreraParalela {
                     .stream().filter(Objects::nonNull).min(Integer::compareTo)
                     .orElseThrow(() -> new IllegalArgumentException("Lista vacía"));
 
+    public static final Function<List<Integer>, Long> CALCULAR_CANTIDAD = lista ->
+            Optional.ofNullable(lista).map(l -> l.stream().filter(Objects::nonNull).count()).orElse(0L);
+
     public static final Function<List<Integer>, Integer> CALCULAR_MAXIMO = lista ->
-            Optional.ofNullable(lista)
-                    .orElseThrow(() -> new IllegalArgumentException("La lista no puede ser null"))
-                    .stream()
-                    .filter(Objects::nonNull)
-                    .max(Integer::compareTo)
-                    .orElseThrow(() -> new IllegalArgumentException("La lista no puede estar vacía"));
+            Optional.ofNullable(lista).orElseThrow(() -> new IllegalArgumentException("Lista null"))
+                    .stream().filter(Objects::nonNull).max(Integer::compareTo)
+                    .orElseThrow(() -> new IllegalArgumentException("Lista vacía"));
+
+    private CarreraParalela() {}
+
+    /**
+     * Une ambas listas y calcula métricas finales.
+     */
+    public static Resultados analizarListas(List<Integer> lista1, List<Integer> lista2) {
+        List<Integer> combinada = Stream.of(lista1, lista2)
+                .filter(Objects::nonNull)
+                .flatMap(List::stream)
+                .filter(Objects::nonNull)
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
+
+        if (combinada.isEmpty()) throw new IllegalArgumentException("Se requiere al menos un número");
+
+        int maximo = combinada.stream().max(Integer::compareTo).orElseThrow();
+        int minimo = combinada.stream().min(Integer::compareTo).orElseThrow();
+        long cantidad = combinada.size();
+        return new Resultados(maximo, minimo, cantidad);
+    }
+
+    public static void main(String[] args) {
+        Resultados r = analizarListas(Arrays.asList(5,2,9), Arrays.asList(4,2,7,10));
+        System.out.println(r);
+    }
 }
-    
