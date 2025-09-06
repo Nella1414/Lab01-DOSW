@@ -19,13 +19,33 @@ import java.util.stream.Collectors;
  */
 public final class TesoroLlaves {
 
-    /** Par clave-valor usado como entrada (simula registros sin estructura). */
-    public record Par(String clave, String valor) {}
+    /**
+     * Par clave-valor usado como entrada (simula registros sin estructura).
+     */
+    public record Par(String clave, String valor) {
+    }
 
-    private TesoroLlaves() {}
+    private TesoroLlaves() {
+    }
 
-    public static Hashtable<String,String> construirHashtable(List<Par> pares) {
-        Hashtable<String,String> tabla = new Hashtable<>();
+    /**
+     * Estudiante A: Construye un HashMap ignorando claves duplicadas (conserva el primer valor observado).
+     */
+    public static Map<String, String> construirHashMap(List<Par> pares) {
+        Map<String, String> mapa = new HashMap<>();
+        if (pares == null) return mapa;
+        pares.stream()
+                .filter(Objects::nonNull)
+                .filter(p -> p.clave() != null)
+                .forEach(p -> mapa.putIfAbsent(p.clave(), p.valor()));
+        return mapa;
+    }
+
+    /**
+     * Estudiante B: Construye un Hashtable (sincronizado) ignorando claves duplicadas (primer valor).
+     */
+    public static Hashtable<String, String> construirHashtable(List<Par> pares) {
+        Hashtable<String, String> tabla = new Hashtable<>();
         if (pares == null) return tabla;
         pares.stream()
                 .filter(Objects::nonNull)
