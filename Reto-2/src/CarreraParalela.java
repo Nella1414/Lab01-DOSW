@@ -45,7 +45,8 @@ public final class CarreraParalela {
         long cantidad = combinada.size();
         boolean mayorMultiploDe2 = maximo % 2 == 0;
         boolean mayorDivisorDe2 = 2 % maximo == 0;
-        return new Resultados(maximo, minimo, cantidad, mayorMultiploDe2, mayorDivisorDe2);
+        boolean cantidadPar = cantidad % 2 == 0;
+        return new Resultados(maximo, minimo, cantidad, mayorMultiploDe2, mayorDivisorDe2,cantidadPar);
     }
 
     public static void main(String[] args) {
