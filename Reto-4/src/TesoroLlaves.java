@@ -53,4 +53,24 @@ public final class TesoroLlaves {
                 .forEach(p -> tabla.putIfAbsent(p.clave(), p.valor()));
         return tabla;
     }
+
+    public static Map<String,String> combinarTesoroFinal(List<Par> entradasHashMap, List<Par> entradasHashtable) {
+        Map<String,String> mapa = construirHashMap(entradasHashMap);
+        Hashtable<String,String> tabla = construirHashtable(entradasHashtable);
+
+        // Fusionar: comenzar con HashMap, sobreescribir con valores del Hashtable (prioridad B)
+        Map<String,String> fusion = new ConcurrentHashMap<>(mapa);
+        tabla.forEach((k,v) -> fusion.put(k, v));
+
+        // Stream para: mayúsculas -> ordenar -> recopilar preserving order
+        return fusion.entrySet().stream()
+                .map(e -> Map.entry(e.getKey().toUpperCase(Locale.ROOT), e.getValue())) // mayúsculas
+                .sorted(Map.Entry.comparingByKey())                                     // orden ascendente
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a,b)->b, // merge function (no debería usarse aquí salvo duplicado post-mayúsculas)
+                        LinkedHashMap::new
+                ));
+    }
 }
