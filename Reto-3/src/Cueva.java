@@ -10,7 +10,7 @@ public class Cueva {
         return buffer.reverse().toString();
     }
     public static void main(String[] args) {
-        java.util.function.Function<String, String> ecoLambda = Reto3Cueva::ecoEspecial;
+        java.util.function.Function<String, String> ecoLambda = Cueva::ecoEspecial;
         String mensaje = "HolaCueva";
         String resultado = ecoLambda.apply(mensaje);
         System.out.println("Mensaje original: " + mensaje);
