@@ -1,5 +1,3 @@
-package com.lab.retos;
-
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -37,5 +35,24 @@ public final class BatallaConjuntos {
                 .filter(n -> n % 3 != 0)
                 .collect(Collectors.toSet());
     }
+
+    /**
+     * Genera un TreeSet (ordenado) con números aleatorios eliminando múltiplos de 5.
+     * @param cantidad cantidad tentativa
+     * @param limite límite superior exclusivo
+     * @param seed semilla
+     * @return TreeSet filtrado y ordenado
+     */
+    public static NavigableSet<Integer> generarArenaTreeSet(int cantidad, int limite, long seed) {
+        Random rnd = new Random(seed);
+        TreeSet<Integer> set = new TreeSet<>();
+        for (int i = 0; i < cantidad; i++) {
+            set.add(rnd.nextInt(limite));
+        }
+        return set.stream()
+                .filter(n -> n % 5 != 0)
+                .collect(Collectors.toCollection(TreeSet::new));
+    }
+
 
 }
