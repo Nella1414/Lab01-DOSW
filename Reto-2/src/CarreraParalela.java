@@ -44,7 +44,8 @@ public final class CarreraParalela {
         int minimo = combinada.stream().min(Integer::compareTo).orElseThrow();
         long cantidad = combinada.size();
         boolean mayorMultiploDe2 = maximo % 2 == 0;
-        return new Resultados(maximo, minimo, cantidad,mayorMultiploDe2);
+        boolean mayorDivisorDe2 = 2 % maximo == 0;
+        return new Resultados(maximo, minimo, cantidad, mayorMultiploDe2, mayorDivisorDe2);
     }
 
     public static void main(String[] args) {

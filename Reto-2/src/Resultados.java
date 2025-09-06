@@ -4,12 +4,17 @@ package com.lab.retos;
 public record Resultados(
         int maximo,
         int minimo,
-        long cantidad
+        long cantidad,
+        boolean mayorMultiploDe2,
+        boolean mayorDivisorDe2,
+
 ) {
     @Override public String toString() {
         return "Resultados{" +
                 "max=" + maximo +
                 ", min=" + minimo +
-                ", cantidad=" + cantidad + '}';
+                ", cantidad=" + cantidad +
+                ", mayorMultiploDe2=" + mayorMultiploDe2 +
+                ", mayorDivisorDe2=" + mayorDivisorDe2 + '}';
     }
 }
