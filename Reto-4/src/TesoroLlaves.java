@@ -52,7 +52,7 @@ public final class TesoroLlaves {
         return tabla;
     }
 
-        public static Map<String,String> combinarTesoroFinal(List<Par> entradasHashMap, List<Par> entradasHashtable) {
+    public static Map<String,String> combinarTesoroFinal(List<Par> entradasHashMap, List<Par> entradasHashtable) {
         Map<String,String> mapa = construirHashMap(entradasHashMap);
         Hashtable<String,String> tabla = construirHashtable(entradasHashtable);
 
