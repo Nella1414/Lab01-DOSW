@@ -43,7 +43,8 @@ public final class CarreraParalela {
         int maximo = combinada.stream().max(Integer::compareTo).orElseThrow();
         int minimo = combinada.stream().min(Integer::compareTo).orElseThrow();
         long cantidad = combinada.size();
-        return new Resultados(maximo, minimo, cantidad);
+        boolean mayorMultiploDe2 = maximo % 2 == 0;
+        return new Resultados(maximo, minimo, cantidad,mayorMultiploDe2);
     }
 
     public static void main(String[] args) {
