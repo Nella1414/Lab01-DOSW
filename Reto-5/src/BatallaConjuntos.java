@@ -1,3 +1,5 @@
+package com.lab.retos;
+
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -54,5 +56,35 @@ public final class BatallaConjuntos {
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
+    /**
+     * Unifica las arenas en un TreeSet (orden natural). Duplicados se descartan automáticamente.
+     * @param hashSetArena arena del HashSet (A)
+     * @param treeSetArena arena del TreeSet (B)
+     * @return TreeSet unión
+     */
+    public static NavigableSet<Integer> unificar(Set<Integer> hashSetArena, Set<Integer> treeSetArena) {
+        TreeSet<Integer> union = new TreeSet<>();
+        if (hashSetArena != null) union.addAll(hashSetArena);
+        if (treeSetArena != null) union.addAll(treeSetArena);
+        return union;
+    }
 
+    /**
+     * Imprime cada número en formato "Número en arena: X" usando stream + map + joining.
+     * @param numeros conjunto ordenado
+     * @return representación multilínea
+     */
+    public static String imprimir(NavigableSet<Integer> numeros) {
+        return numeros.stream()
+                .map(n -> "Número en arena: " + n)
+                .collect(Collectors.joining("\n"));
+    }
+
+    /** Ejemplo rápido en main. */
+    public static void main(String[] args) {
+        Set<Integer> a = generarArenaHashSet(12, 30, 7L); // A elimina múltiplos de 3
+        Set<Integer> b = generarArenaTreeSet(12, 30, 7L); // B elimina múltiplos de 5
+        NavigableSet<Integer> union = unificar(a, b);
+        System.out.println(imprimir(union));
+    }
 }
