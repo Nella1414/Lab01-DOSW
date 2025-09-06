@@ -17,20 +17,16 @@ import java.util.stream.Collectors;
  */
 public final class TesoroLlaves {
 
-    /**
-     * Par clave-valor usado como entrada (simula registros sin estructura).
-     */
-    public record Par(String clave, String valor) {
-    }
+    /** Par clave-valor usado como entrada (simula registros sin estructura). */
+    public record Par(String clave, String valor) {}
 
-    private TesoroLlaves() {
-    }
+    private TesoroLlaves() {}
 
     /**
      * Estudiante A: Construye un HashMap ignorando claves duplicadas (conserva el primer valor observado).
      */
-    public static Map<String, String> construirHashMap(List<Par> pares) {
-        Map<String, String> mapa = new HashMap<>();
+    public static Map<String,String> construirHashMap(List<Par> pares) {
+        Map<String,String> mapa = new HashMap<>();
         if (pares == null) return mapa;
         pares.stream()
                 .filter(Objects::nonNull)
@@ -42,8 +38,8 @@ public final class TesoroLlaves {
     /**
      * Estudiante B: Construye un Hashtable (sincronizado) ignorando claves duplicadas (primer valor).
      */
-    public static Hashtable<String, String> construirHashtable(List<Par> pares) {
-        Hashtable<String, String> tabla = new Hashtable<>();
+    public static Hashtable<String,String> construirHashtable(List<Par> pares) {
+        Hashtable<String,String> tabla = new Hashtable<>();
         if (pares == null) return tabla;
         pares.stream()
                 .filter(Objects::nonNull)
@@ -52,6 +48,27 @@ public final class TesoroLlaves {
         return tabla;
     }
 
+    /**
+     * Estudiante A (fase posterior): Convierte todas las claves a mayúsculas en una nueva copia.
+     */
+    public static Map<String,String> clavesMayusculas(Map<String,String> origen) {
+        return origen.entrySet().stream()
+                .map(e -> Map.entry(e.getKey().toUpperCase(Locale.ROOT), e.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a,b)->a, LinkedHashMap::new));
+    }
+
+    /**
+     * Método final combinado tras resolución de conflictos.
+     * <p>
+     * Pasos:
+     * <ol>
+     *   <li>Construir HashMap y Hashtable independientes.</li>
+     *   <li>Fusionar priorizando valores del Hashtable en conflictos.</li>
+     *   <li>Transformar claves a mayúsculas.</li>
+     *   <li>Ordenar ascendentemente las claves.</li>
+     *   <li>Retornar LinkedHashMap preservando orden de iteración final.</li>
+     * </ol>
+     */
     public static Map<String,String> combinarTesoroFinal(List<Par> entradasHashMap, List<Par> entradasHashtable) {
         Map<String,String> mapa = construirHashMap(entradasHashMap);
         Hashtable<String,String> tabla = construirHashtable(entradasHashtable);
@@ -70,5 +87,21 @@ public final class TesoroLlaves {
                         (a,b)->b, // merge function (no debería usarse aquí salvo duplicado post-mayúsculas)
                         LinkedHashMap::new
                 ));
+    }
+
+    /**
+     * Formatea el mapa final como líneas CLAVE=valor usando stream().
+     */
+    public static String imprimir(Map<String,String> mapa) {
+        return mapa.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue())
+                .collect(Collectors.joining("\n"));
+    }
+
+    public static void main(String[] args) {
+        List<Par> a = List.of(new Par("oro","barra"), new Par("cofre","madera"), new Par("oro","duplicado"));
+        List<Par> b = List.of(new Par("llave","hierro"), new Par("cofre","acero"));
+        Map<String,String> resultado = combinarTesoroFinal(a, b);
+        System.out.println(imprimir(resultado));
     }
 }
