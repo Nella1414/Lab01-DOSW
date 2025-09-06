@@ -70,3 +70,70 @@ Y en equipos pequeños, como de dos personas, también es muy importante mantene
 
 2.	¿Qué es y cómo funciona el Pull Request?
 Un Pull Request es una herramienta que ofrece Git para solicitar la integración en la rama principal o main de los cambios realizados en una rama. Funciona como una solicitud de revisión, donde otros desarrolladores pueden comentar, sugerir cambios y aprobar antes de que el código se fusione oficialmente.
+
+# Parte 2 Laboratorio
+
+## Parte 2
+Agregar imagenes
+
+## Parte 3
+
+#### 1. ¿Cuál es la diferencia entre git merge y git rebase?
+merge combina el historial de dos ramas creando un nuevo commit de unión.
+
+rebase reescribe el historial colocando los commits de una rama encima de otra, manteniendo la línea más limpia.
+
+#### 2. Si dos ramas modifican la misma línea de un archivo, ¿qué sucede al hacer merge?
+Se produce un conflicto y Git pide al usuario que lo resuelva manualmente antes de continuar.
+
+#### 3. ¿Cómo puedes ver gráficamente el historial de merges y ramas en consola?
+Con:
+```
+git log --graph --oneline --all
+```
+
+#### 4. Explica la diferencia entre un commit y un push.
+
+commit: guarda cambios localmente en tu repositorio.
+
+push: envía esos commits al repositorio remoto (ej. GitHub).
+
+#### 5. ¿Para qué sirve git stash y git pop?
+
+stash: guarda cambios temporales sin hacer commit.
+
+pop: recupera esos cambios guardados y los aplica de nuevo.
+
+#### 6. ¿Qué diferencia hay entre HashMap y Hashtable?
+
+HashMap: no es sincronizado, más rápido, puede tener una clave `null`.
+
+Hashtable: es sincronizado (seguro para hilos), más lento, no acepta claves `null`.
+
+#### 7. ¿Qué ventajas tiene Collectors.toMap() frente a un bucle tradicional para llenar un mapa?
+Permite construir mapas de forma más declarativa y concisa usando streams, con mejor legibilidad y flexibilidad (manejo de duplicados, transformaciones, etc.).
+
+#### 8. Si usas List con objetos y luego aplicas stream().map(), ¿qué tipo de operación estás haciendo?
+Una transformación: conviertes cada elemento en otro valor u objeto y obtienes un nuevo stream.
+
+#### 9. ¿Qué hace el método stream().filter() y qué retorna?
+Filtra elementos según una condición (predicado) y retorna un nuevo stream solo con los que cumplen la condición.
+
+#### 10. Describe el paso a paso de cómo crear una rama desde develop si es una funcionalidad nueva.
+
+Estar en develop: ``` git checkout develop.```
+
+Actualizar: ```git pull origin develop.```
+
+Crear rama: ```git checkout -b feature/nueva_funcionalidad.```
+
+Subir rama: ```git push origin feature/nueva_funcionalidad.```
+
+#### 11. ¿Cuál es la diferencia entre crear una rama con git branch y con git checkout -b?
+
+git branch nombre: solo crea la rama, no te mueve a ella.
+
+git checkout -b nombre: crea la rama y además te cambia a esa rama.
+
+#### 12. ¿Por qué es recomendable crear ramas feature/ para nuevas funcionalidades en lugar de trabajar en main directamente?
+Porque permite trabajar de forma segura y aislada, evitando dañar el código estable en main y facilitando revisiones y control de versiones.
